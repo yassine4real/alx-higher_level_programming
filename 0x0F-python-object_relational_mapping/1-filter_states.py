@@ -18,7 +18,8 @@ if __name__ == "__main__":
 
     cur = connection.cursor()
 
-    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY states.id ASC")
+    cur.execute("""SELECT * FROM states WHERE name LIKE BINARY 'N%' 
+                ORDER BY states.id ASC""")
 
     states = cur.fetchall()
 
@@ -27,4 +28,3 @@ if __name__ == "__main__":
 
     cur.close()
     connection.close()
-  
