@@ -3,13 +3,11 @@
    in the states table of hbtn_0e_0_usa where name matches the argument"""
 import sys
 import MySQLdb
-
 if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
     state_searched = sys.argv[4]
-
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -17,17 +15,11 @@ if __name__ == "__main__":
         passwd=mysql_password,
         db=database_name
     )
-
     cursor = db.cursor()
-
     query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC".format(state_searched)
-
     cursor.execute(query)
-    
     states = cursor.fetchall()
-
     for state in states:
         print(state)
-    
     cursor.close()
     db.close()
