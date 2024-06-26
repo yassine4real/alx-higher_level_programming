@@ -34,8 +34,8 @@ if __name__ == "__main__":
     cursor.execute(query, (state_name,))
     cities = cursor.fetchall()
 
-    for city in cities:
-        print(city)
+    tmp = list(row[0] for row in cities)
+    print(*tmp, sep=", ")
 
     cursor.close()
     db.close()
