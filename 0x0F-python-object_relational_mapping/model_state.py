@@ -5,9 +5,11 @@ a Base class to work with MySQLAlchemy ORM.
 """
 
 from sqlalchemy import Column, Integer, String
+import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+Base = sqlalchemy.orm.declarative_base()
+
 
 class State(Base):
     """State class
